@@ -1,0 +1,20 @@
+O que fazer:
+
+- estudar layout *
+- criar layout *
+- criar rotas *
+- criar store e estrutura redux *
+- estudar wizard *
+- criar step *
+- criar form de cliente*
+- criar form do endereço
+
+- criar listagem
+- criar edicao
+- criar exclusao
+
+
+- cadastro de pessoas
+- cadastro de endereço
+- Listar, editar e exluir pessoas e endereços
+- usar material ui e redux
