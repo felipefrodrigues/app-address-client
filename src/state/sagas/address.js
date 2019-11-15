@@ -1,4 +1,4 @@
-import { put, select, call } from "redux-saga/effects"
+import { put, call } from "redux-saga/effects"
 import { Creators } from "../ducks/client"
 import Services from "../../services"
 import constants from "../../constants"

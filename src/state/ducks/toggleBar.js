@@ -7,8 +7,9 @@ export const { Types, Creators } = createActions({
 const INITIAL_STATE = {
   toggleBar: true,
   routes: [
-    { id: 0, name: "Home", link: "/" },
-    { id: 1, name: "Client", link: "/client" },
+    { id: 0, name: "Inicio", link: "/" },
+    { id: 1, name: "Cadastro", link: "/client" },
+    { id: 1, name: "Listagem", link: "/listing" },
   ],
 }
 

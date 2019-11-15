@@ -1,22 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles"
+
 const drawerWidth = 240
 
-const useClientForm = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: "100%",
-    marginTop: "0px",
-  },
-  radioGroup: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    marginTop: "16px",
-  },
+const useClientPage = makeStyles((theme) => ({
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
@@ -33,4 +19,4 @@ const useClientForm = makeStyles((theme) => ({
   },
 }))
 
-export default useClientForm
+export default useClientPage

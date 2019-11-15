@@ -8,7 +8,7 @@ export const { Types, Creators } = createActions({
 })
 
 const INITIAL_STATE = {
-  stepsTitle: ["Cadastre-se", "Cadastre o endereço", "Obrigado por se cadastrar !"],
+  stepsTitle: ["Cadastre-se", "Cadastre o endereço"],
   activeStep: 0,
 }
 

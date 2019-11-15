@@ -24,6 +24,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "quotes": ["error", "double", "avoid-escape"],
     "semi": ["error", "never"],
+    "linebreak-style": ["error", "windows"],
     "react/jsx-props-no-spreading": [0, {
       "explicitSpread": "ignore"
     }],

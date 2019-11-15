@@ -7,6 +7,7 @@ import {
 import Container from "@material-ui/core/Container"
 import Home from "./pages/home"
 import Client from "./pages/client"
+import Listing from "./pages/listing"
 import ToggleBar from "./components/toggleBar"
 import Header from "./components/header"
 import useApp from "./styles"
@@ -22,6 +23,9 @@ const App = () => {
           <Switch>
             <Route path="/client">
               <Client />
+            </Route>
+            <Route path="/listing">
+              <Listing />
             </Route>
             <Route path="/">
               <Home />

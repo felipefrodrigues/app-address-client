@@ -8,7 +8,7 @@ const Address = () => {
   const classes = useAddress()
   const dispatch = useDispatch()
 
-  const { address, addressHasLoad, foundAdress } = useSelector((state) => state.clientState)
+  const { address, foundAdress } = useSelector((state) => state.clientState)
 
 
   const onAddressCEP = (event, arrayIndice) => {
@@ -69,6 +69,7 @@ const Address = () => {
                 />
               )
             }
+            return (<div />)
           })
         }
       </div>
