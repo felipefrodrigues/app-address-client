@@ -4,11 +4,13 @@ export const { Types, Creators } = createActions({
   setClientField: ["arrayIndice", "field", "value"],
   setAddressField: ["arrayIndice", "field", "value"],
   setAddress: ["value"],
+  setClients: ["clients"],
   putClient: ["value"],
   putAddress: ["value"],
   putState: ["field", "value"],
   postForm: [],
   resetAddress: [],
+  deleteClient: ["id"],
 })
 
 const INITIAL_STATE = {
@@ -284,6 +286,7 @@ const postForm = (state = INITIAL_STATE) => {
   const newAddress = {}
   client.map((field) => {
     newClient[field.name] = field.value
+    newClient.id = clients.length + 1
     field.value = ""
     field.error = false
     return field
@@ -304,13 +307,29 @@ const postForm = (state = INITIAL_STATE) => {
   }
 }
 
+const setClients = (state = INITIAL_STATE, action) => ({
+  ...state,
+  clients: action.clients,
+})
+
+const deleteClient = (state = INITIAL_STATE, action) => {
+  const { clients } = state
+  const newClients = clients.filter((client) => client.id !== action.id)
+  return {
+    ...state,
+    clients: newClients,
+  }
+}
+
 export default createReducer(INITIAL_STATE, {
   [Types.SET_CLIENT_FIELD]: setClientField,
   [Types.SET_ADDRESS_FIELD]: setAddressField,
   [Types.SET_ADDRESS]: setAddress,
+  [Types.SET_CLIENTS]: setClients,
   [Types.PUT_CLIENT]: putClient,
   [Types.PUT_ADDRESS]: putAddress,
   [Types.PUT_STATE]: putState,
   [Types.RESET_ADDRESS]: resetAddress,
   [Types.POST_FORM]: postForm,
+  [Types.DELETE_CLIENT]: deleteClient,
 })

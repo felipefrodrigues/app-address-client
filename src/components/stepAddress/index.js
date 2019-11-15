@@ -14,7 +14,7 @@ const Address = () => {
   const onAddressCEP = (event, arrayIndice) => {
     const { value } = event.target
     if (value.length >= 8) {
-      dispatch({ type: "GET_ADDRESS", cep: value })
+      dispatch({ type: "ASYNC_GET_ADDRESS", cep: value })
     }
     dispatch(Creators.setAddressField(arrayIndice, "value", value))
   }

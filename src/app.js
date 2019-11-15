@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import Container from "@material-ui/core/Container"
 import Home from "./pages/home"
 import Client from "./pages/client"
@@ -12,6 +13,8 @@ import ToggleBar from "./components/toggleBar"
 import Header from "./components/header"
 
 const App = () => {
+  const dispatch = useDispatch()
+  dispatch({ type: "ASYNC_GET_CLIENTS" })
   return (
     <Router>
       <ToggleBar />

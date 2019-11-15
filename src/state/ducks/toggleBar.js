@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   routes: [
     { id: 0, name: "Inicio", link: "/" },
     { id: 1, name: "Cadastro", link: "/client" },
-    { id: 1, name: "Listagem", link: "/listing" },
+    { id: 2, name: "Listagem", link: "/listing" },
   ],
 }
 

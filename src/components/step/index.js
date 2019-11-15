@@ -6,8 +6,8 @@ import StepLabel from "@material-ui/core/StepLabel"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import useStep from "./styles"
-import Client from "../client"
-import Address from "../address"
+import Client from "../stepClient"
+import Address from "../stepAddress"
 import { Creators } from "../../state/ducks/step"
 
 const getStepContent = (step) => {
@@ -29,7 +29,7 @@ const ContainerStep = () => {
   const { stepsTitle, activeStep } = useSelector((state) => state.stepState)
 
   const handleNext = (step) => {
-    dispatch({ type: "VALIDATE_FIELDS", step })
+    dispatch({ type: "ASYNC_VALIDATE_FIELDS", step })
   }
 
   const handleBack = () => {
