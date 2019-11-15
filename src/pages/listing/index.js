@@ -1,19 +1,11 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import clsx from "clsx"
-import useListingPage from "./styles"
+import Layout from "../../components/layout"
 
 const Listing = () => {
-  const { toggleBar } = useSelector((state) => state.toggleBarState)
-  const classes = useListingPage()
-
   return (
-    <section className={clsx(classes.appBar, {
-      [classes.appBarShift]: toggleBar,
-    })}
-    >
+    <Layout>
       Teste
-    </section>
+    </Layout>
   )
 }
 

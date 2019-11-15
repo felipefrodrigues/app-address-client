@@ -10,15 +10,13 @@ import Client from "./pages/client"
 import Listing from "./pages/listing"
 import ToggleBar from "./components/toggleBar"
 import Header from "./components/header"
-import useApp from "./styles"
 
 const App = () => {
-  const classes = useApp()
   return (
     <Router>
       <ToggleBar />
       <Header />
-      <article className={classes.root}>
+      <article>
         <Container maxWidth="lg">
           <Switch>
             <Route path="/client">
