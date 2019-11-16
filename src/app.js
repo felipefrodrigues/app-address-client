@@ -22,6 +22,9 @@ const App = () => {
       <article>
         <Container maxWidth="lg">
           <Switch>
+            <Route path="/client/:id">
+              <Client />
+            </Route>
             <Route path="/client">
               <Client />
             </Route>

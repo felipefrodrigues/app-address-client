@@ -11,6 +11,7 @@ export const { Types, Creators } = createActions({
   postForm: [],
   resetAddress: [],
   deleteClient: ["id"],
+  editClient: ["id"],
 })
 
 const INITIAL_STATE = {
@@ -321,6 +322,14 @@ const deleteClient = (state = INITIAL_STATE, action) => {
   }
 }
 
+const editClient = (state = INITIAL_STATE, action) => {
+  console.log("ola")
+  
+  return {
+    ...state,
+  }
+}
+
 export default createReducer(INITIAL_STATE, {
   [Types.SET_CLIENT_FIELD]: setClientField,
   [Types.SET_ADDRESS_FIELD]: setAddressField,
@@ -332,4 +341,6 @@ export default createReducer(INITIAL_STATE, {
   [Types.RESET_ADDRESS]: resetAddress,
   [Types.POST_FORM]: postForm,
   [Types.DELETE_CLIENT]: deleteClient,
+  [Types.EDIT_CLIENT]: editClient,
+
 })

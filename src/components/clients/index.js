@@ -1,6 +1,6 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { Creators } from "../../state/ducks/client"
 
 const Clients = () => {
   const { clients } = useSelector((state) => state.clientState)
@@ -9,16 +9,13 @@ const Clients = () => {
     const { id } = client
     dispatch({ type: "ASYNC_DELETE_CLIENT", id })
   }
-  const putClient = (client) => {
-    console.log(client)
-  }
   return (
     <div>
       {clients.map((client) => (
         <div>
           {client.nome}
           <button type="button" onClick={() => deleteClient(client)}>remover</button>
-          <button type="button" onClick={() => putClient(client)}>editar</button>
+          <Link to={`/client/${client.id}`}>editar</Link>
         </div>
       ))}
     </div>
