@@ -12,6 +12,8 @@ export const { Types, Creators } = createActions({
   resetAddress: [],
   deleteClient: ["id"],
   editClient: ["id"],
+  putForm: ["id"],
+  resetClient: [],
 })
 
 const INITIAL_STATE = {
@@ -101,7 +103,7 @@ const INITIAL_STATE = {
       label: "Digite seu CEP",
       maxLength: 8,
       required: true,
-      key: 0,
+      key: 6,
       options: [],
       disabled: false,
     },
@@ -114,7 +116,7 @@ const INITIAL_STATE = {
       label: "Rua",
       maxLength: 100,
       required: true,
-      key: 1,
+      key: 7,
       options: [],
       disabled: true,
     },
@@ -127,7 +129,7 @@ const INITIAL_STATE = {
       label: "Bairro",
       maxLength: 100,
       required: true,
-      key: 2,
+      key: 8,
       options: [],
       disabled: true,
     },
@@ -140,7 +142,7 @@ const INITIAL_STATE = {
       label: "Numero",
       maxLength: 100,
       required: false,
-      key: 3,
+      key: 9,
       options: [],
       disabled: true,
     },
@@ -153,7 +155,7 @@ const INITIAL_STATE = {
       label: "Complemento",
       maxLength: 100,
       required: false,
-      key: 4,
+      key: 10,
       options: [],
       disabled: true,
     },
@@ -166,7 +168,7 @@ const INITIAL_STATE = {
       label: "Cidade",
       maxLength: 100,
       required: true,
-      key: 5,
+      key: 11,
       options: [],
       disabled: true,
     },
@@ -179,7 +181,7 @@ const INITIAL_STATE = {
       label: "Estado",
       maxLength: 100,
       required: true,
-      key: 6,
+      key: 12,
       options: [],
       disabled: true,
     },
@@ -280,7 +282,21 @@ const resetAddress = (state = INITIAL_STATE) => {
     foundAdress: false,
   }
 }
+const resetClient = (state = INITIAL_STATE) => {
+  const { client } = state
 
+  const newClient = client.map((field) => {
+    field.value = ""
+    field.error = false
+    field.key = Math.random()
+    return field
+  })
+
+  return {
+    ...state,
+    client: newClient,
+  }
+}
 const postForm = (state = INITIAL_STATE) => {
   const { address, client, clients } = state
   const newClient = {}
@@ -323,10 +339,67 @@ const deleteClient = (state = INITIAL_STATE, action) => {
 }
 
 const editClient = (state = INITIAL_STATE, action) => {
-  console.log("ola")
-  
+  const { clients, client, address } = state
+  const clientEdit = clients.filter((cli) => parseInt(action.id, 10) === parseInt(cli.id, 10))
+  if (clientEdit.length > 0) {
+    Object.keys(clientEdit[0]).map((prop) => {
+      if (prop === "address") {
+        address.map((field) => {
+          Object.keys(clientEdit[0][prop][0]).map((propAddress) => {
+            if (field.name === propAddress) {
+              field.value = clientEdit[0][prop][0][propAddress]
+              if (field.name === "cep") {
+                field.disabled = true
+              }
+              if (field.name === "numero" || field.name === "complemento") {
+                field.disabled = false
+              }
+            }
+            return propAddress
+          })
+          return field
+        })
+      } else {
+        client.map((field) => {
+          if (field.name === prop) {
+            field.value = clientEdit[0][prop]
+          }
+          return field
+        })
+      }
+      return prop
+    })
+  }
+
   return {
     ...state,
+    client,
+    address,
+    foundAdress: true,
+  }
+}
+
+const putForm = (state = INITIAL_STATE, action) => {
+  const { address, client, clients } = state
+  const newClient = clients.filter((cli) => cli.id !== action.id)
+  const newAddress = newClient[0].address[0]
+  client.map((field) => {
+    newClient[0][field.name] = field.value
+    field.value = ""
+    field.error = false
+    return field
+  })
+
+  address.map((field) => {
+    newAddress[field.name] = field.value
+    field.value = ""
+    field.error = false
+    return field
+  })
+
+  return {
+    ...state,
+    clients: [...clients],
   }
 }
 
@@ -342,5 +415,6 @@ export default createReducer(INITIAL_STATE, {
   [Types.POST_FORM]: postForm,
   [Types.DELETE_CLIENT]: deleteClient,
   [Types.EDIT_CLIENT]: editClient,
-
+  [Types.PUT_FORM]: putForm,
+  [Types.RESET_CLIENT]: resetClient,
 })

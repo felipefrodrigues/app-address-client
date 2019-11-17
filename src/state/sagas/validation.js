@@ -30,8 +30,14 @@ function* fieldRequired(action) {
     const objectVerification = yield verificationField(address)
     if (objectVerification.verification > 0) {
       yield put(CreatorClient.putAddress(objectVerification.newFields))
+    } else if (action.editMode) {
+      const result = yield call(Services.put, `${constants.POST_FORM}`)
+      if (result.sucesso) {
+        yield put(CreatorClient.putForm())
+        yield put(Creators.nextStep())
+      }
     } else {
-      const result = yield call(Services.get, `${constants.POST_FORM}`)
+      const result = yield call(Services.post, `${constants.POST_FORM}`)
       if (result.sucesso) {
         yield put(CreatorClient.postForm())
         yield put(Creators.nextStep())

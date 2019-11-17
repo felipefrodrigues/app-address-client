@@ -13,6 +13,12 @@ const useAddress = makeStyles((theme) => ({
   },
   cep: {
     marginBottom: "10px",
+    display: "flex",
+    alignItems: "baseline",
+  },
+  button: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
 }))
 

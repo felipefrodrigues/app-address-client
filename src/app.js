@@ -19,8 +19,8 @@ const App = () => {
     <Router>
       <ToggleBar />
       <Header />
-      <article>
-        <Container maxWidth="lg">
+      <main>
+        <Container maxWidth="xl">
           <Switch>
             <Route path="/client/:id">
               <Client />
@@ -36,7 +36,7 @@ const App = () => {
             </Route>
           </Switch>
         </Container>
-      </article>
+      </main>
     </Router>
   )
 }

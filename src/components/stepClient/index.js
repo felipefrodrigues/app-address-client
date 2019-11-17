@@ -22,46 +22,44 @@ const Client = () => {
 
   return (
     <form className={classes.container}>
-      <div>
-        {
-          clientFields.map((field, index) => {
-            if (field.type === "radio") {
-              return (
-                <FormControl error={field.error} className={classes.radioGroup} required={field.required} component="fieldset">
-                  <FormLabel component="legend">{field.label}</FormLabel>
-                  <RadioGroup aria-label="gender" name={field.name} onChange={(e) => onClientInputChange(e, index)} row>
-                    {
-                      field.options.map((option) => (
-                        <FormControlLabel
-                          key={option.id}
-                          value={option.value}
-                          control={<Radio />}
-                          label={option.label}
-                        />
-                      ))
-                    }
-                  </RadioGroup>
-                </FormControl>
-              )
-            }
+      {
+        clientFields.map((field, index) => {
+          if (field.type === "radio") {
             return (
-              <TextField
-                key={field.key}
-                required={field.required}
-                id={field.id}
-                label={field.label}
-                name={field.name}
-                defaultValue={field.value}
-                className={classes.textField}
-                margin="normal"
-                onChange={(e) => onClientInputChange(e, index)}
-                error={field.error}
-                inputProps={{ maxLength: field.maxLength, autoComplete: "off" }}
-              />
+              <FormControl key={field.key} error={field.error} className={classes.radioGroup} required={field.required} component="fieldset">
+                <FormLabel component="legend">{field.label}</FormLabel>
+                <RadioGroup defaultValue={field.value} aria-label="gender" name={field.name} onChange={(e) => onClientInputChange(e, index)} row>
+                  {
+                    field.options.map((option) => (
+                      <FormControlLabel
+                        key={option.value}
+                        value={option.value}
+                        control={<Radio />}
+                        label={option.label}
+                      />
+                    ))
+                  }
+                </RadioGroup>
+              </FormControl>
             )
-          })
-        }
-      </div>
+          }
+          return (
+            <TextField
+              key={field.key}
+              required={field.required}
+              id={field.id}
+              label={field.label}
+              name={field.name}
+              defaultValue={field.value}
+              className={classes.textField}
+              margin="normal"
+              onChange={(e) => onClientInputChange(e, index)}
+              error={field.error}
+              inputProps={{ maxLength: field.maxLength, autoComplete: "off" }}
+            />
+          )
+        })
+      }
     </form>
   )
 }

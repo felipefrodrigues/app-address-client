@@ -1,10 +1,10 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 import Stepper from "@material-ui/core/Stepper"
 import Step from "@material-ui/core/Step"
 import StepLabel from "@material-ui/core/StepLabel"
 import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
 import useStep from "./styles"
 import Client from "../stepClient"
 import Address from "../stepAddress"
@@ -26,10 +26,10 @@ const getStepContent = (step) => {
 const ContainerStep = () => {
   const classes = useStep()
   const dispatch = useDispatch()
-  const { stepsTitle, activeStep } = useSelector((state) => state.stepState)
+  const { stepsTitle, activeStep, editMode } = useSelector((state) => state.stepState)
 
   const handleNext = (step) => {
-    dispatch({ type: "ASYNC_VALIDATE_FIELDS", step })
+    dispatch({ type: "ASYNC_VALIDATE_FIELDS", step, editMode })
   }
 
   const handleBack = () => {
@@ -53,19 +53,28 @@ const ContainerStep = () => {
           )
         })}
       </Stepper>
-      <div>
+      <div className={classes.finishStep}>
         {activeStep === stepsTitle.length ? (
           <div>
-            <Button onClick={handleReset} className={classes.button}>
-              Clique para fazer um novo cadastro
-            </Button>
+            <span className={classes.finishMsg}>Obrigado por se cadastrar</span>
+            <div>
+              <Link to="/listing">Listagem</Link>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={handleReset}
+              >
+                Novo Cadastro
+              </Button>
+            </div>
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            {getStepContent(activeStep)}
             <div>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Back
+                Voltar
               </Button>
               <Button
                 variant="contained"
@@ -73,7 +82,7 @@ const ContainerStep = () => {
                 onClick={() => handleNext(activeStep)}
                 className={classes.button}
               >
-                {activeStep === stepsTitle.length - 1 ? "Finish" : "Next"}
+                {activeStep === stepsTitle.length - 1 ? "Finalizar" : "Proximo"}
               </Button>
             </div>
           </div>

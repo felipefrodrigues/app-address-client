@@ -13,7 +13,6 @@ export default class Services {
   static async post(url, params) {
     try {
       const response = await axios.post(url, params)
-      // console.log(response.data)
       return response.data
     } catch (e) {
       return {
@@ -26,7 +25,6 @@ export default class Services {
   static async put(url, params) {
     try {
       const response = await axios.put(url, params)
-      // console.log(response.data)
       return response.data
     } catch (e) {
       return {
@@ -41,7 +39,6 @@ export default class Services {
       const response = await axios.delete(params)
       return response.data
     } catch (e) {
-      // console.log(e)
       return e
     }
   }

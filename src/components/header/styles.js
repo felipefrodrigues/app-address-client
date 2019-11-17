@@ -6,6 +6,9 @@ const useHeader = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  menu: {
+    backgroundColor: "rgb(27, 36, 47)",
+  },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,

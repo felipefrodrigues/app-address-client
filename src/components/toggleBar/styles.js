@@ -11,14 +11,21 @@ const useToggleBar = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "rgb(35, 47, 62)",
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end",
+    backgroundColor: "rgb(27, 36, 47)",
+    color: "white",
+  },
+  link: {
+    color: "white",
+  },
+  icon: {
+    color: "white",
   },
 }))
 

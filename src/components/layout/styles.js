@@ -4,7 +4,8 @@ const drawerWidth = 240
 
 const useLayout = makeStyles((theme) => ({
   container: {
-    marginTop: "80px",
+    paddingTop: "80px",
+    width: "100%",
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {

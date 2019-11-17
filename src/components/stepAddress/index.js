@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import TextField from "@material-ui/core/TextField"
+import Button from "@material-ui/core/Button"
 import { Creators } from "../../state/ducks/client"
 import useAddress from "./styles"
 
@@ -47,7 +48,19 @@ const Address = () => {
                     inputProps={{ maxLength: field.maxLength, autoComplete: "off" }}
                     disabled={field.disabled}
                   />
-                  { field.disabled ? <button type="button" onClick={() => dispatch(Creators.resetAddress())}>Alterar</button> : <div />}
+                  { field.disabled
+                    ? (
+                      <Button
+                        size="small"
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => dispatch(Creators.resetAddress())}
+                        className={classes.button}
+                      >
+                        Alterar
+                      </Button>
+                    )
+                    : <div />}
                 </div>
               )
             }

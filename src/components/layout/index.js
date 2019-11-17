@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import PropTypes from "prop-types"
 import clsx from "clsx"
 import useLayout from "./styles"
+import useIsMobile from "../../hooks/useIsMobile"
 
-const Layout = (props) => {
-  const [children, setChildren] = useState(props.children)
+const Layout = ({ children }) => {
+  const [child, setChildren] = useState(children)
   const { toggleBar } = useSelector((state) => state.toggleBarState)
   const classes = useLayout()
-
+  const mobile = useIsMobile()
   useEffect(() => {
-    setChildren(props.children)
-  })
+    setChildren(children)
+  }, [children])
 
   return (
-    <section className={clsx(classes.container, classes.appBar, {
-      [classes.appBarShift]: toggleBar,
-    })}
+    <section
+      className={mobile
+        ? clsx(classes.container, classes.appBar)
+        : clsx(classes.container, classes.appBar, {
+          [classes.appBarShift]: toggleBar,
+        })}
     >
-      {children}
+      {child}
     </section>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout
