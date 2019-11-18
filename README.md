@@ -2,14 +2,14 @@
 
 Sistema simples de cadastro, edição e exclusão de usuários.
 
+### Prerequisites
+
+NPM
+
 ## Getting Started
 
 npm install
 npm start
-
-### Prerequisites
-
-NPM
 
 ## Built With
 
