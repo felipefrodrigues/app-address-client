@@ -20,6 +20,11 @@ npm start
 * [Material-UI](https://material-ui.com/)
 * [ESLINT](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
 
+## Next Features
+
+Validação dos campos do form
+Alertas de feedback
+
 ## Authors
 
 * **Felipe Rodrigues** 
